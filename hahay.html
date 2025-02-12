@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Cinta Valentine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            transition: background 1s ease;
+        }
+
+        .section {
+            text-align: center;
+            padding: 50px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease-in-out, transform 1s ease;
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            margin: 20px;
+            overflow: hidden;
+        }
+
+        .header.section {
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 30px 10px;
+                margin: 10px;
+            }
+        }
+
+        .hidden {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .header {
+            background-color: #ff7f94;
+            color: white;
+            padding: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease-in-out;
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 30px;
+            }
+
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .header p {
+                font-size: 1.5em;
+            }
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Caveat', cursive;
+            font-weight: bolder;
+            color: #ffffff; /* Changed to plain white */
+            text-shadow: 0 0 10px rgba(141, 31, 83, 0.9), 0 0 20px rgba(138, 13, 67, 0.9), 0 0 30px rgba(0, 0, 0, 0.9); /* Changed to black */
+        }
+
+        .header p {
+            font-size: 1.8em;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3), 0 0 10px #ff4d67, 0 0 20px #ff4d67; /* Added Valentine color shadow */
+        }
+
+        .glowing-text {
+            color: #ff4d67;
+            text-shadow: 0 0 5px #ff4d67, 0 0 10px #ff4d67, 0 0 20px #ff4d67, 0 0 30px #ff4d67;
+            animation: glow 1.5s infinite alternate;
+            z-index: 2;
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px #ff4d67, 0 0 10px #ff4d67, 0 0 15px #ff4d67, 0 0 20px #ff4d67;
+            }
+
+            100% {
+                text-shadow: 0 0 15px #ff4d67, 0 0 25px #ff4d67, 0 0 35px #ff4d67, 0 0 45px #ff4d67;
+            }
+        }
+
+        .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dua kolom */
+    gap: 20px;
+    padding: 40px;
+    z-index: 2;
+}
+
+.gallery-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.gallery-item {
+    width: 100%; /* Gambar menyesuaikan kolom */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    animation: blink 2s infinite alternate, fadeOut 2s infinite alternate; /* Add blinking and fade-out animation */
+}
+
+@keyframes blink {
+    0% {
+        filter: brightness(1) hue-rotate(0deg);
+    }
+    50% {
+        filter: brightness(1.2) hue-rotate(30deg); /* Valentine color */
+    }
+    100% {
+        filter: brightness(1) hue-rotate(0deg);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.gallery img:active {
+    transform: scale(0.95);
+    filter: brightness(1);
+}
+
+        @media (max-width: 768px) {
+            .gallery-item {
+                width: calc(50% - 20px); /* For smaller screens, images will be in 2 columns */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-item {
+                width: 100%; /* For very small screens, images will be in 1 column */
+            }
+        }
+
+        @keyframes randomAnimation {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+            25% {
+                transform: scale(1.05) rotate(5deg);
+            }
+            50% {
+                transform: scale(1) rotate(0deg);
+            }
+            75% {
+                transform: scale(1.05) rotate(-5deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .crying-emoji {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: url('https://image.flaticon.com/icons/svg/2917/2917990.svg') no-repeat center center;
+            background-size: contain;
+            animation: float 5s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .section .crying-emoji {
+            animation: float 5s linear infinite;
+        }
+
+        .section .crying-emoji:nth-child(1) {
+            top: 10%;
+            left: 10%;
+        }
+
+        .section .crying-emoji:nth-child(2) {
+            top: 20%;
+            right: 15%;
+        }
+
+        .section .crying-emoji:nth-child(3) {
+            bottom: 15%;
+            left: 20%;
+        }
+
+        .section .crying-emoji:nth-child(4) {
+            bottom: 10%;
+            right: 10%;
+        }
+
+        .footer {
+            text-align: center;
+            background-color: #ff7f94;
+            color: white;
+            padding: 30px;
+            font-size: 1.3em;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            z-index: 2;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            color: #ff4d67;
+            text-decoration: underline;
+        }
+
+        .scroll-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff4d67;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            font-size: 25px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: none;
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            .scroll-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+
+        .scroll-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .scroll-btn:focus {
+            outline: none;
+        }
+
+        .scroll-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .scroll-btn:hover i {
+            transform: rotate(45deg);
+        }
+
+        .typing {
+            font-size: 1.7em;
+            color: #a61d24;
+            margin: 20px auto;
+            width: 70%;
+            text-align: center;
+            min-height: 50px;
+            transition: color 0.5s ease;
+            letter-spacing: 1px;
+            line-height: 1.5;
+            z-index: 2;
+        }
+
+        .typing:hover {
+            color: #ff4d67;
+        }
+
+        .love-heart {
+            font-size: 4.5em;
+            color: #ff4d67;
+            animation: pulse 1.5s infinite;
+            margin-bottom: 20px;
+            z-index: 2;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('https://image.flaticon.com/icons/svg/2917/2917990.svg') no-repeat center center;
+            background-size: contain;
+            animation: float 5s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .ornament {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: url('https://image.flaticon.com/icons/svg/2917/2917990.svg') no-repeat center center;
+            background-size: contain;
+            animation: bounce 2s infinite;
+            z-index: 2;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .ornament1 {
+            top: 10%;
+            left: 10%;
+        }
+
+        .ornament2 {
+            top: 20%;
+            right: 15%;
+        }
+
+        .ornament3 {
+            bottom: 15%;
+            left: 20%;
+        }
+
+        .ornament4 {
+            bottom: 10%;
+            right: 10%;
+        }
+
+        .choice-section {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 50px;
+            text-align: center;
+            margin: 20px;
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            .choice-section {
+                padding: 30px;
+                margin: 10px;
+            }
+
+            .choice-section h2 {
+                font-size: 2em;
+            }
+
+            .choice-section button {
+                padding: 10px 20px;
+                font-size: 1.2em;
+            }
+        }
+
+        .choice-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ff4d67;
+        }
+
+        .choice-section button {
+            background-color: #ff4d67;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .choice-section button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: url('https://image.flaticon.com/icons/svg/2917/2917990.svg') no-repeat center center;
+            background-size: contain;
+            animation: float 5s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .train {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background: url('https://image.flaticon.com/icons/svg/2917/2917990.svg') no-repeat center center;
+            background-size: contain;
+            animation: moveTrain 10s linear infinite;
+        }
+
+        @keyframes moveTrain {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(100vw);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+    <audio id="audio" loop>
+        <source src="lagu1.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="header section fade-in">
+        <div class="content">
+            <h1>Selamat Hari Valentine, Sayang!</h1>
+            <p>Kamu adalah orang spesial di hatiku ❤</p>
+        </div>
+    </div>
+
+    <div class="gallery">
+    <div class="gallery-column">
+        <div class="gallery-item"><img src="foto1.jpg" alt="foto 1"></div>
+        <div class="gallery-item"><img src="foto2.jpg" alt="foto 2"></div>
+        <div class="gallery-item"><img src="foto3.jpg" alt="foto 3"></div>
+        <div class="gallery-item"><img src="foto4.jpg" alt="foto 4"></div>
+    </div>
+    <div class="gallery-column">
+        <div class="gallery-item"><img src="foto5.jpg" alt="foto 5"></div>
+        <div class="gallery-item"><img src="foto6.jpg" alt="foto 6"></div>
+        <div class="gallery-item"><img src="foto7.jpg" alt="foto 7"></div>
+        <div class="gallery-item"><img src="foto8.jpg" alt="foto 8"></div>
+    </div>
+</div>
+
+
+    <div class="section hidden">
+        <div class="content">
+            <p class="typing glowing-text" id="typing1">Selamat Ulang Tahun, Sayang!</p>
+            <div class="particles"></div>
+            <div class="ornament ornament1"></div>
+            <div class="ornament ornament2"></div>
+            <div class="balloon"></div>
+            <div class="train"></div>
+            <div class="crying-emoji"></div>
+            <div class="crying-emoji"></div>
+            <div class="crying-emoji"></div>
+            <div class="crying-emoji"></div>
+        </div>
+    </div>
+    <div class="section hidden">
+        <div class="content">
+            <p class="typing glowing-text" id="typing2">Selamat Ulang Tahun, Sayang!</p>
+            <div class="particles"></div>
+            <div class="ornament ornament3"></div>
+            <div class="ornament ornament4"></div>
+            <div class="balloon"></div>
+            <div class="train"></div>
+            <div class="crying-emoji"></div>
+            <div class="crying-emoji"></div>
+            <div class="crying-emoji"></div>
+            <div class="crying-emoji"></div>
+        </div>
+    </div>
+    <div class="section hidden">
+        <div class="content">
+            <p class="typing glowing-text" id="typing3">Selamat Ulang Tahun, Sayang!</p>
+            <div class="particles"></div>
+            <div class="ornament ornament1"></div>
+            <div class="ornament ornament2"></div>
+            <div class="balloon"></div>
+            <div class="train"></div>
+            <div class="crying-emoji"></div>
+            <div class="crying-emoji"></div>
+            <div class="crying-emoji"></div>
+            <div class="crying-emoji"></div>
+        </div>
+    </div>
+    <div class="section hidden">
+        <div class="content">
+            <p class="typing glowing-text" id="typing4">Selamat Ulang Tahun, Sayang!</p>
+            <div class="particles"></div>
+            <div class="ornament ornament3"></div>
+            <div class="ornament ornament4"></div>
+            <div class="balloon"></div>
+            <div class="train"></div>
+            <div class="crying-emoji"></div>
+            <div class="crying-emoji"></div>
+            <div class="crying-emoji"></div>
+            <div class="crying-emoji"></div>
+        </div>
+    </div>
+    <div class="section hidden">
+        <div class="content">
+            <p class="typing glowing-text" id="typing5">Selamat Ulang Tahun, Sayang!</p>
+            <div class="particles"></div>
+            <div class="ornament ornament1"></div>
+            <div class="ornament ornament2"></div>
+            <div class="balloon"></div>
+            <div class="train"></div>
+            <div class="crying-emoji"></div> 
+            <div class="crying-emoji"></div>
+            <div class="crying-emoji"></div>
+            <div class="crying-emoji"></div>
+        </div>
+    </div>
+
+    <div class="footer section hidden">
+        <div class="content">
+            <p>Dari aku untuk kamu, <a href="#">Cinta seumur hidupku ❤</a></p>
+        </div>
+    </div>
+
+    <div class="choice-section section hidden">
+        <div class="content">
+            <h2>Pilihlah,  Natasya Sayang</h2>
+            <button onclick="sendWhatsAppMessage('Aku sayang Mamaszz Irham🤍')">Sayang Aku</button>
+            <button onclick="sendWhatsAppMessage('Aku sayang Mamaszzzz IAM 🤍')">Nggak Sayang</button>
+        </div>
+    </div>
+
+    <button class="scroll-btn" id="scrollBtn">
+        <i class="fas fa-arrow-down"></i>
+    </button>
+
+    <script>
+        const sections = document.querySelectorAll('.section');
+        const scrollBtn = document.getElementById('scrollBtn');
+        let currentSection = 0;
+        const typingTexts = [
+            "Aku mencintaimu, sayang. Setiap hari bersamamu adalah kebahagiaan yang tak ternilai. ❤",
+            "Hari-hariku menjadi lebih indah sejak aku mengenalmu. Kamu adalah anugerah terbaik yang pernah kumiliki. ❤",
+            "Aku bersyukur memiliki seseorang seperti kamu. Bersama kita bisa melewati semua rintangan. ❤",
+            "Kamu bukan sekadar bagian dari hidupku, kamu adalah detaknya—tanpamu, segalanya terasa hampa. ❤",
+            "Bersama kamu, segala masalah terasa ringan. Karena cinta kita adalah kekuatan kita.❤",
+            "Tak ada yang lebih membahagiakan selain melihat senyumanmu. Cinta kita adalah yang terindah. ❤"
+        ];
+
+        const audio = document.getElementById('audio');
+        audio.loop = true; // Set audio to loop
+
+        function startTyping(element, text) {
+            if (!element) return;
+            element.textContent = "";
+            let charIndex = 0;
+            function type() {
+                if (charIndex < text.length) {
+                    element.textContent += text.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, 80);
+                }
+            }
+            type();
+        }
+
+        sections.forEach((section, index) => {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        section.classList.add('visible');
+                        observer.unobserve(section);
+                        const typingElement = section.querySelector('.typing');
+                        if (typingElement) startTyping(typingElement, typingTexts[index - 1]);
+                        createParticles(section);
+                        if (typingTexts[index - 1].includes("Aku mencintaimu, sayang")) { // Play audio when the specific text is visible
+                            audio.play();
+                        }
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(section);
+        });
+
+        function updateScrollBtn() {
+            scrollBtn.style.display = (currentSection < sections.length - 1) ? 'block' : 'none';
+        }
+
+        scrollBtn.addEventListener('click', () => {
+            if (currentSection < sections.length - 1) {
+                currentSection++;
+                sections[currentSection].scrollIntoView({ behavior: 'smooth' });
+                setTimeout(updateScrollBtn, 500);
+            }
+        });
+
+        function createParticles(section) {
+            const particlesContainer = section.querySelector('.particles');
+            for (let i = 0; i < 100; i++) { // Increased number of particles
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        function sendWhatsAppMessage(message) {
+            const phoneNumber = '6281234567890'; // Ganti dengan nomor WhatsApp tujuan
+            const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleryItems = document.querySelectorAll('.gallery-item img');
+            galleryItems.forEach((img, index) => {
+                if (index % 4 === 0 || index % 4 === 1) {
+                    img.style.transform = 'rotate(0deg) translateX(0)'; // Revert rotation and spacing
+                    img.style.marginRight = '0'; // Revert spacing
+                } else {
+                    img.style.transform = 'rotate(0deg) translateX(0)'; // Revert rotation and spacing
+                    img.style.marginLeft = '0'; // Revert spacing
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
